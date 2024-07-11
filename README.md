@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## [Landwind - Tailwind CSS Landing Page](https://demo.themesberg.com/landwind/)
 
 <a href="https://demo.themesberg.com/landwind/" rel="Tailwind CSS Landing Page">![Tailwind CSS Landing Page Demo - Flowbite](https://themesberg.s3.us-east-2.amazonaws.com/public/github/landwind/thumbnail.png)</a>
@@ -49,3 +50,7 @@ We build free and premium themes with technologies such as Bootstrap, React, Tai
 ## License
 
 This project is open source under the MIT license.
+=======
+# haroltAndMattPharmacy
+A project to the university - PLEASE, only people with good heart and nice spirit servants of Jesus Christ allowed.
+>>>>>>> a7448952c9e2920b1e57927a84af4cbf9c333963
