@@ -10,7 +10,7 @@ $conn = new mysqli(SERVERNAME, USER, PASSWORD, DB_NAME);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 } else {
-	echo json_encode("Connected successfully");
+	//echo json_encode("Connected successfully");
 }
 /*
 TO INSERT:
