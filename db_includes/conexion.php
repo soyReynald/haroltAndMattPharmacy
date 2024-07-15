@@ -1,4 +1,5 @@
 <?php
+session_start();
 define("USER", "root");
 define("DB_NAME", "sample_pharmacy");
 define("PASSWORD", "");
