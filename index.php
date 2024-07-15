@@ -110,7 +110,7 @@
 						<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 						
 							<span style="font-size: 0.8rem; margin-left: 10px;">
-								<a style="text-decoration: none; white: black !important;" name="buy_btn_<?= $id_to_product; ?>" href="db_includes/functionality_process.php?=id_to=<?= $id_to_product ?>" name="buy_btn">Buy Product</a>
+								<a style="text-decoration: none; white: black !important;" name="buy_btn_<?= $id_to_product; ?>" href="db_includes/functionality_process.php?id_to=<?= $id_to_product ?>&update_stock=1" name="buy_btn">Buy Product</a>
 							</span>
 						</button>
 					</div>
