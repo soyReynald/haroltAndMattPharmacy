@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landwind - Tailwind CSS Landing Page Demo</title>
+    <title>Harolt and Matt Pharmacy</title>
 
     <!-- Meta SEO -->
     <meta name="title" content="Landwind - Tailwind CSS Landing Page">
@@ -88,117 +88,36 @@
     </section>
     <!-- End block -->
     <!-- Start block -->
+	<?php
+		// General php to retrieve information
+		$sql = "SELECT id, product_name, quantity_in_stock, price FROM products"; // This is correctly working thanks Jesus.
+		$result = $conn->query($sql);
+	?>
     <section class="bg-white dark:bg-gray-900">
         <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
-            <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
-                <div>
-                    <img src="./images/products/product_1.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">Wipe Lens Cleaning Wipe</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $100 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_2.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">Australian Creams MKII by G&M</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $60 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_3.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">Avene DermAbsolu Recontouring</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $60 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_4.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">NS-8 Heel Balm Complex 4g (Max 1 per order)</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $60 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-            </div>
-            <div class="col-span-2 space-y-8 md:grid md:grid-cols-2 md:gap-12 md:space-y-0">
-                <div>
-                    <img src="./images/products/product_5.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">NS-21 Sensitive Skin Cleanser 8g (Max 1 per order)</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $60 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_6.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">New Beginning Bamboo Diposable</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $30 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_7.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">Klorane Shampoo with Flax Fiber 7ml</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $30 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-                <div>
-                    <img src="./images/products/product_8.jpg" width="37" height="auto" />
-                    <h3 class="mb-2 text-2xl font-bold dark:text-white">Avene Micellar Lotion 25 ml</h3>
-                    <p class="font-light text-black-500 dark:text-black-400">Price: $100 USD</p>
-					<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-					<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-					<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-					</svg>
-						<span style="font-size: 0.8rem; margin-left: 10px;">
-							Buy now
-						</span>
-					</button>
-                </div>
-            </div>
-        </div>
+				<?php
+				while($rows = $result->fetch_assoc()):
+					$id_to_product = $rows['id'];
+					$price = $rows['price'];
+					$name_of_product = $rows['product_name'];
+					$quantity_in_stock = $rows['quantity_in_stock'];
+				?>
+					<div>
+						<img src="./images/products/product_1.jpg" width="37" height="auto" />
+						<h3 class="mb-2 text-2xl font-bold dark:text-white">Wipe Lens Cleaning Wipe</h3>
+						<p class="font-light text-black-500 dark:text-black-400">Price: $100 USD</p>
+						<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+						<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+						<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+						</svg>
+							<span style="font-size: 0.8rem; margin-left: 10px;">
+								<a style="text-decoration: none; white: black !important;" name="buy_btn_<?= $id_to_product; ?>" href="db_includes/functionality_process.php?=id_to=<?= $id_to_product ?>" name="buy_btn">Buy Product</a>
+							</span>
+						</button>
+					</div>
+				<?php
+				endwhile;
+				?>
       </section>
     <!-- End block -->
     <!-- Start block -->

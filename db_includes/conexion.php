@@ -15,8 +15,6 @@ if ($conn->connect_error) {
 /*
 TO INSERT:
 
-$sql = "INSERT INTO MyGuests (firstname, lastname, email)
-VALUES ('John', 'Doe', 'john@example.com')";
 
 */
 

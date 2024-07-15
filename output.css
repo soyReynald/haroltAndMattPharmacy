@@ -2445,3 +2445,7 @@ input:checked + .toggle-bg {
     line-height: 1;
   }
 }
+
+button.bg-blue-700:hover .buy_btn{
+	text-decoration: underline;
+}
