@@ -51,6 +51,7 @@
 		.logout_btn:hover{
 			opacity: 90%;
 		}
+		
 	</style>
 </head>
 <body>
@@ -145,7 +146,8 @@
 	  </div>
 	</section>
 	<?php
-	} elseif(isset($_SESSION['user_signed_in']) == true) {		
+	} elseif(isset($_SESSION['user_signed_in']) && $_SESSION['user_signed_in'] === 1) {		
+	
 	?>
     <!-- Start block -->
     <section class="bg-white dark:bg-gray-900">

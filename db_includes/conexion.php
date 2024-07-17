@@ -13,25 +13,6 @@ if ($conn->connect_error) {
 } else {
 	//echo json_encode("Connected successfully");
 }
-/*
-TO INSERT:
-
-
-*/
-
-/*
-TO UPDATE:
-
-$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
-
-if ($conn->query($sql) === TRUE) {
-  echo "Record updated successfully";
-} else {
-  echo "Error updating record: " . $conn->error;
-}
-
-$conn->close();
-*/
 
 
 ?>

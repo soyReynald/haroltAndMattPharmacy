@@ -1,5 +1,6 @@
 <?php
 include_once("conexion.php");
+
 $baseUrl = "http://localhost/haroltAndMatt/";
 
 if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock'])) { // Here should be specified the request as well
@@ -58,11 +59,28 @@ if (isset($data['submit']) && $data['submit'] == "Register"){
 }
 
 
+if(isset($data) && $data['login'] == "Sign in"){	
+	$password = mysqli_real_escape_string($conn, $data['password']);
+	$email = mysqli_real_escape_string($conn, $data['email']);
+	
+	$sql ="SELECT * FROM users WHERE email = '{$email}'";
+
+	$result= $conn->query($sql);
+
+	if ($result->num_rows){
+		 $_SESSION['user_signed_in'] = 1;
+		if($_SESSION['user_signed_in'] === 1) {
+			header("Location: {$baseUrl}");	 
+		}
+	} else {
+		return mysqli_error();
+	}
+}
+
 if(isset($_GET) && $_GET['logout'] == 1){
 	session_destroy();
 	header("Location: {$baseUrl}");
 }
-
 
 $conn->close();
 
