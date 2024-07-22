@@ -127,13 +127,13 @@ function update_or_insert_into_other_TABLE($conexion_to_db, $id_of_product) {
 		$result_of_buying_cart_query = $conexion_to_db->query($sql_check_if_product_has_been_updated);
 		$rows_in_cart = mysqli_fetch_array($result_of_buying_cart_query, MYSQLI_ASSOC);
 		
-		echo $result_of_buying_cart_query->num_rows;
 		if ($result_of_buying_cart_query->num_rows){
 			echo $rows_in_cart['quantity_chose'];
 			if ($rows_in_cart['quantity_chose'] > 0) {
 				// TO update
 				update_products_in_cart($conexion_to_db, $user_id, $product_in_product);
-			} else {
+			} 
+		} else {
 				// TO insert 
 				$product_name = $row['product_name'];
 				$quantity_in_stock = $row['quantity_in_stock'];
@@ -141,7 +141,6 @@ function update_or_insert_into_other_TABLE($conexion_to_db, $id_of_product) {
 				$price = $row['price'];
 				$product_url = $row['product_url'];
 				insert_products_in_cart($conn, $user, $product_name, $quantity_pending, $price, $product_url); 
-			}
 		}
 	}
 }
