@@ -127,41 +127,44 @@ function update_or_insert_into_other_TABLE($conexion_to_db, $id_of_product) {
 		$result_of_buying_cart_query = $conexion_to_db->query($sql_check_if_product_has_been_updated);
 		$rows_in_cart = mysqli_fetch_array($result_of_buying_cart_query, MYSQLI_ASSOC);
 		
-		if ($result_of_buying_cart_query->num_rows){
-			echo $rows_in_cart['quantity_chose'];
+		if ($result_of_buying_cart_query->num_rows != 0) {
 			if ($rows_in_cart['quantity_chose'] > 0) {
 				// TO update
 				update_products_in_cart($conexion_to_db, $user_id, $product_in_product);
 			} 
 		} else {
 				// TO insert 
+				// $product_id -- IS UP HERE ABOVE
 				$product_name = $row['product_name'];
 				$quantity_in_stock = $row['quantity_in_stock'];
-				$quantity_pending = $row['quanity_pending'];
+				$quantity_pending = $row['quantity_pending'];
 				$price = $row['price'];
 				$product_url = $row['product_url'];
-				insert_products_in_cart($conn, $user, $product_name, $quantity_pending, $price, $product_url); 
+				insert_products_in_cart($conexion_to_db, $user_id, $product_name, $quantity_pending, $price, $product_url, $product_id); 
 		}
 	}
 }
 
 function update_products_in_cart($conn, $user, $product_price) {
+	$baseUrl = "http://localhost/haroltAndMatt/";
 	$sql = "UPDATE products_in_cart SET `quantity_chose` = quantity_chose+1, `price` = '{$product_price}' WHERE user_id_who_chose = '{$user}'"; // 2 medidas
 
 	if ($conn->query($sql) === TRUE) {
 		echo "Product, updated sucessfully";
-		header("Location: http://localhost/haroltAndMatt/");
+		$sqlToCheckQuantity = "";
+		header("Location: {$baseUrl}");
 	}
 }
 
-function insert_products_in_cart($conexion_to_db, $user_id, $_product_name, $_quantity_pending, $price, $product_image) {
+function insert_products_in_cart($conexion_to_db, $user_id, $_product_name, $_quantity_pending, $price, $product_image, $id_to_product) {
+	$baseUrl = "http://localhost/haroltAndMatt/";
 	
-	$sql = "INSERT INTO products_in_cart (`user_id_who_chose`, `product_name`, `quantity_chose`, `price`, `product_image_url`) VALUES ('{$user_id}','{$_product_name}', 1, '{$price}', '{$product_image}')";
-	echo $sql;
+	$sql = "INSERT INTO products_in_cart (`user_id_who_chose`, `product_name`, `quantity_chose`, `price`, `product_image_url`, `id_of_product`) VALUES ('{$user_id}','{$_product_name}', 1, '{$price}', '{$product_image}', '{$id_to_product}')";
 	
 	if ($conexion_to_db->query($sql) === TRUE) {
 		echo "Product, added sucessfully";
-		//header("Location: http://localhost/haroltAndMatt/");
+		$sqlToCheckQuantity = "";
+		header("Location: {$baseUrl}");
 	} else{
 		$conexion_to_db->mysqli_error();
 	}
@@ -169,7 +172,14 @@ function insert_products_in_cart($conexion_to_db, $user_id, $_product_name, $_qu
 }
 
 // END of FUNCTIONS
+// Jehová le preguntó a Job: ¿Dónde estabas cuando puce límite a las aguas? ...
+// Hasta aquí: Att: Adonai.
 
+// Ya es un nuevo día, así que: Buen día Jesús :)
+// (He SURELY answered: Buen día Reyo).
+
+// ----
+// ----
 $conn->close();
 
 ?>
