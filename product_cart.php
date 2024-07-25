@@ -91,10 +91,10 @@
                 <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="./" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">Home and Products</a>
+                            <a href="./" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Home and Products</a>
                         </li>
                         <li>
-                            <a  href="./product_cart.php" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Products Pharmacy Cart</a>
+                            <a href="./product_cart.php" class="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">Products Pharmacy Cart</a>
                         </li>
                         <li>
                             <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Payment</a>
@@ -161,22 +161,12 @@
 	
 	?>
     <!-- Start block -->
-    <section class="bg-white dark:bg-gray-900">
-        <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
-            <div class="mr-auto place-self-center lg:col-span-7">
-                <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Giving in cuality <br> pharmacy products.</h1>
-                <p class="max-w-2xl mb-6 font-light text-black-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">The only pharmacy that gives to you; What you need when you need it, and right what was needed.</p>
-            </div>
-            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="./images/new_logo.jpg" alt="hero image">
-            </div>                
-        </div>
-    </section>
-    <!-- End block -->
-    <!-- Start block -->
 	<?php
 		// General php to retrieve information
-		$sql = "SELECT id, product_name, quantity_in_stock, price, product_url FROM products"; // This is correctly working thanks Jesus.
+		$id_of_user = $_SESSION['user_id'];
+		$sql = "SELECT id, product_name, quantity_chose, SUM(price), product_image_url FROM products_in_cart WHERE user_id_who_chose = '{$id_of_user}' GROUP BY id_of_product"; // This will bring up the info of the cart items
+		
+		
 		$result = $conn->query($sql);
 	?>
     <section class="bg-white dark:bg-gray-900">
@@ -184,19 +174,18 @@
 				<?php
 				while($rows = $result->fetch_assoc()):
 					$id_to_product = $rows['id'];
-					$price = $rows['price'];
+					$total_price = $rows['SUM(price)'];
 					$name_of_product = $rows['product_name'];
-					$quantity_in_stock = $rows['quantity_in_stock'];
-					$image_of_product = $rows['product_url'];
+					$quantity_chose = $rows['quantity_chose'];
+					$image_of_product = $rows['product_image_url'];
 				?>
 					<div>
 						<img src="./images/products/<?= $image_of_product; ?>" alt="product_<?= $id_to_product; ?> width="37" height="auto"/>
 						<h3 class="mb-2 text-2xl font-bold dark:text-white"><?= $name_of_product ?></h3>
-						<p class="font-light text-black-500 dark:text-black-400">Price: <?= $price ?> USD</p>
-						<button style="font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem"type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-						
+						<p class="font-light text-black-500 dark:text-black-400"><b>Total chose:</b> <u><b><?= $quantity_chose ?></b></u> to buy</p>
+						<button style="background-color: red; color: white; margin-right: 10px; font-size: 14px font-size: 0.5rem; margin-top: 0.3rem; padding: 0.4rem;" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
 							<span style="font-size: 0.8rem; margin-left: 10px;">
-								<a style="text-decoration: none; white: black !important;" name="buy_btn_<?= $id_to_product; ?>" href="db_includes/functionality_process.php?id_to=<?= $id_to_product ?>&update_stock=1" name="buy_btn">Buy Product</a>
+								<a style="text-decoration: none; white: black !important;" name="buy_btn_<?= $id_to_product; ?>" href="db_includes/functionality_process.php?id_to=<?= $id_to_product ?>&update_stock=remove" name="buy_btn">Remove from cart</a>
 							</span>
 						</button>
 					</div>
