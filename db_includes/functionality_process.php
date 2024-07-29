@@ -114,9 +114,9 @@ if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock']) && @$_GET['u
 	$row = mysqli_fetch_array($result_of_select, MYSQLI_ASSOC);
 	if ($result_of_select->num_rows == 1) {
 		// To remove if the quantity is equal to 1
-		$sql_to_delete_the_last_product = "DELETE FROM products_in_cart WHERE id_of_product";
+		$sql_to_delete_the_last_product = "DELETE FROM products_in_cart WHERE id_of_product = '{$id_to_product}'";
 		if ($conn->query($sql_to_delete_the_last_product) === TRUE) {
-			header("Location: {$baseUrl}");
+			header("Location: {$baseUrl}/product_cart.php?=one_removed=true");
 		} else {
 		  echo "Error deleting record: " . $conn->error;
 		}	
@@ -126,7 +126,7 @@ if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock']) && @$_GET['u
 
 		if ($conn->query($sql_to_update_quantity) === TRUE) {
 			echo "Products updated successfully";
-			header("Location: {$baseUrl}/product_cart.php");
+			header("Location: {$baseUrl}/product_cart.php?=one_removed=true");
 		} else {
 			echo "Error in conexion or updating".$conn->mysqli_error();
 			header("Location: {$baseUrl}");
