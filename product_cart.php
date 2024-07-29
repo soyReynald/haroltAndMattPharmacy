@@ -164,7 +164,7 @@
 	<?php
 		// General php to retrieve information
 		$id_of_user = $_SESSION['user_id'];
-		$sql = "SELECT id, product_name, quantity_chose, SUM(price), product_image_url FROM products_in_cart WHERE user_id_who_chose = '{$id_of_user}' GROUP BY id_of_product"; // This will bring up the info of the cart items
+		$sql = "SELECT id, id_of_product, product_name, quantity_chose, SUM(price), product_image_url FROM products_in_cart WHERE user_id_who_chose = '{$id_of_user}' GROUP BY id_of_product"; // This will bring up the info of the cart items
 		
 		
 		$result = $conn->query($sql);
@@ -173,7 +173,7 @@
         <div class="items-center max-w-screen-xl px-4 py-8 mx-auto lg:grid lg:grid-cols-4 lg:gap-16 xl:gap-24 lg:py-24 lg:px-6">
 				<?php
 				while($rows = $result->fetch_assoc()):
-					$id_to_product = $rows['id'];
+					$id_to_product = $rows['id_of_product'];
 					$total_price = $rows['SUM(price)'];
 					$name_of_product = $rows['product_name'];
 					$quantity_chose = $rows['quantity_chose'];

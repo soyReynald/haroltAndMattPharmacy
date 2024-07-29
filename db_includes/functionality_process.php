@@ -3,7 +3,7 @@ include_once("conexion.php");
 
 $baseUrl = "http://localhost/haroltAndMatt/";
 
-if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock'])) { // Here should be specified the request as well
+if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock']) && @$_GET['update_stock'] == '1') { // Here should be specified the request as well
 	$email_in_session = $_SESSION['user_email'];
 	$sql_to_evaluate_user = "SELECT credit_available FROM users WHERE email = '{$email_in_session}'"; 
 	
@@ -24,8 +24,8 @@ if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock'])) { // Here s
 		$price_of_product = $row['price'];
 		$product_image_url = $row['product_url'];
 		
-		
-		if ($credit_of_user > $price_of_product) {
+
+		if ($credit_of_user >= $price_of_product) {
 		
 			$sql = "UPDATE products SET `quantity_in_stock` = quantity_in_stock-1 WHERE id='$id_to_product'"; // 2 medidas
 			if ($conn->query($sql) === TRUE) {
@@ -104,10 +104,44 @@ if(isset($data) && @$data['login'] == "Sign in"){
 	}
 }
 
+if (isset($_GET) && @$_GET['id_to'] && isset($_GET['update_stock']) && @$_GET['update_stock'] == 'remove') {
+	$id_to_product = $_GET['id_to'];
+	$user_id = $_SESSION['user_id'];
+
+	$select_sql = "SELECT * FROM products_in_cart WHERE id_of_product = '$id_to_product' AND quantity_chose = 1";
+	
+	$result_of_select = $conn->query($select_sql);
+	$row = mysqli_fetch_array($result_of_select, MYSQLI_ASSOC);
+	if ($result_of_select->num_rows == 1) {
+		// To remove if the quantity is equal to 1
+		$sql_to_delete_the_last_product = "DELETE FROM products_in_cart WHERE id_of_product";
+		if ($conn->query($sql_to_delete_the_last_product) === TRUE) {
+			header("Location: {$baseUrl}");
+		} else {
+		  echo "Error deleting record: " . $conn->error;
+		}	
+	} else {
+		// To update when the product is still in the database
+		$sql_to_update_quantity = "UPDATE products_in_cart SET quantity_chose = quantity_chose-1 WHERE user_id_who_chose = '{$user_id}' AND id_of_product = '{$id_to_product}'";
+
+		if ($conn->query($sql_to_update_quantity) === TRUE) {
+			echo "Products updated successfully";
+			header("Location: {$baseUrl}/product_cart.php");
+		} else {
+			echo "Error in conexion or updating".$conn->mysqli_error();
+			header("Location: {$baseUrl}");
+		}
+	}
+}
+
+
 if(@$_GET['logout'] == 1){
 	session_destroy();
 	header("Location: {$baseUrl}");
 }
+
+
+
 
 // End of PRE-PROCESS 
 // Beggining of FUNCTIONS
